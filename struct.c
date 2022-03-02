@@ -1,21 +1,24 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <conio.h>
 
 struct Student
 {
+    char name[50];
     int age;
-    double gpa;
-    char name[20];
+    float gpa;
+    
 };
 
+void x(char name[], int age, double gpa)
+{
+    printf("%s %d %.2f", name, age, gpa);
+}
 
-int main(){
-    struct Student student1;
-        student1.age=12;
-        student1.gpa=2.7;
-        strcpy(student1.name, "Sabbir");
+int main()
+{
+    struct Student student1 = {"Sabah", 22, 5.00};
+    x(student1.name, student1.age, student1.gpa);
 
-        printf("%d", student1.age);
-    
     return 0;
 }

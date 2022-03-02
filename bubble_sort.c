@@ -18,7 +18,7 @@ int main()
         printf("%d \n", *(p + i));
         if (swap < *(p + i))
         {
-            swap = *(p + i);
+            swap = &*(p + i);
         }
 
         printf(" %d", swap);
