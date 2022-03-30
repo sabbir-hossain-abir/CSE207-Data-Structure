@@ -9,23 +9,6 @@ struct node
 };
 struct node *tree;
 
-/*
-void create_tree(struct node *);
-struct node *insertElement(struct node *, int);
-void preorderTraversal(struct node *);
-void inorderTraversal(struct node *);
-void postorderTraversal(struct node *);
-struct node *findSmallestElement(struct node *);
-struct node *findLargestElement(struct node *);
-struct node *deleteElement(struct node *, int);
-struct node *mirrorImage(struct node *);
-int totalNodes(struct node *);
-int totalExternalNodes(struct node *);
-int totalInternalNodes(struct node *);
-int Height(struct node *);
-struct node *deleteTree(struct node *);
-*/
-
 void create_tree(struct node *tree)
 {
     tree = NULL;
@@ -62,6 +45,7 @@ struct node *insertElement(struct node *tree, int val)
     }
     return tree;
 }
+
 void preorderTraversal(struct node *tree)
 {
     if (tree != NULL)
@@ -71,6 +55,7 @@ void preorderTraversal(struct node *tree)
         preorderTraversal(tree->right);
     }
 }
+
 void inorderTraversal(struct node *tree)
 {
     if (tree != NULL)
@@ -80,6 +65,7 @@ void inorderTraversal(struct node *tree)
         inorderTraversal(tree->right);
     }
 }
+
 void postorderTraversal(struct node *tree)
 {
     if (tree != NULL)
@@ -159,6 +145,7 @@ struct node *deleteElement(struct node *tree, int val)
     free(cur);
     return tree;
 }
+
 int totalNodes(struct node *tree)
 {
     if (tree == NULL)
@@ -166,6 +153,7 @@ int totalNodes(struct node *tree)
     else
         return (totalNodes(tree->left) + totalNodes(tree->right) + 1);
 }
+
 int totalExternalNodes(struct node *tree)
 {
     if (tree == NULL)
@@ -176,6 +164,7 @@ int totalExternalNodes(struct node *tree)
         return (totalExternalNodes(tree->left) +
                 totalExternalNodes(tree->right));
 }
+
 int totalInternalNodes(struct node *tree)
 {
     if ((tree == NULL) || ((tree->left == NULL) && (tree->right == NULL)))
@@ -183,6 +172,7 @@ int totalInternalNodes(struct node *tree)
     else
         return (totalInternalNodes(tree->left) + totalInternalNodes(tree->right) + 1);
 }
+
 int Height(struct node *tree)
 {
     int leftheight, rightheight;
