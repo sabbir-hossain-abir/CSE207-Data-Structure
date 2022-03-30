@@ -1,16 +1,15 @@
 #include <stdio.h>
 
-    int
-    tower_of_hanoi(int limit, char source_tower, char temporary_tower, char destination_tower)
+int tower_of_hanoi(int limit, char source_tower, char temporary_tower, char destination_tower)
 {
     if (limit == 1)
     {
         printf("\nMove Disk %d From %c To %c\n", limit, source_tower, destination_tower);
         return 0;
     }
-    tower_of_hanoi(limit - 1, source_tower, destination_tower, temporary_tower);
+    tower_of_hanoi(limit - 1, source_tower, temporary_tower, destination_tower);
     printf("Move Disk %d From %c To %c\n", limit, source_tower, destination_tower);
-    tower_of_hanoi(limit - 1, temporary_tower, source_tower, destination_tower);
+    tower_of_hanoi(limit - 1, temporary_tower, destination_tower, source_tower);
     return 0;
 }
 
