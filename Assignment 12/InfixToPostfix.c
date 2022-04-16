@@ -70,8 +70,7 @@ void infix_to_postfix()
     while (!isEmpty())
         postfix[p++] = pop();
     postfix[p] = '\0'; /*End postfix with'\0' to make it a string*/
-} 
-
+}
 
 int priority(char symbol)
 {
@@ -119,7 +118,7 @@ int isEmpty()
         return 1;
     else
         return 0;
-} 
+}
 
 int white_space(char symbol)
 {
@@ -127,7 +126,7 @@ int white_space(char symbol)
         return 1;
     else
         return 0;
-} 
+}
 
 long int eval_post()
 {
