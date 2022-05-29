@@ -1,35 +1,96 @@
 #include <stdio.h>
-#define MAX 10
-void breadth_first_search(int adj[][MAX], int visited[], int start)
+#include <stdlib.h>
+
+struct queue
 {
-    int queue[MAX], rear = -1, front =-1, i;
-    queue[++rear] = start;
-    visited[start] = 1;
-    while (rear != front)
+    int size;
+    int f;
+    int r;
+    int *arr;
+};
+
+int isEmpty(struct queue *q)
+{
+    if (q->r == q->f)
     {
-        start = queue[++front];
-        if (start == 4)
-            printf("5\t");
-        else
-            printf("%c \t", start + 65);
-        for (i = 0; i < MAX; i++)
+        return 1;
+    }
+    return 0;
+}
+
+int isFull(struct queue *q)
+{
+    if (q->r == q->size - 1)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+void enqueue(struct queue *q, int val)
+{
+    if (isFull(q))
+    {
+        printf("This Queue is full\n");
+    }
+    else
+    {
+        q->r++;
+        q->arr[q->r] = val;
+        // printf("Enqued element: %d\n", val);
+    }
+}
+
+int dequeue(struct queue *q)
+{
+    int a = -1;
+    if (isEmpty(q))
+    {
+        printf("This Queue is empty\n");
+    }
+    else
+    {
+        q->f++;
+        a = q->arr[q->f];
+    }
+    return a;
+}
+
+int main()
+{
+    // Initializing Queue (Array Implementation)
+    struct queue q;
+    q.size = 400;
+    q.f = q.r = 0;
+    q.arr = (int *)malloc(q.size * sizeof(int));
+
+    // BFS Implementation
+    int node;
+    int i = 1;
+    int visited[7] = {0, 0, 0, 0, 0, 0, 0};
+    int a[7][7] = {
+        {0, 1, 1, 1, 0, 0, 0},
+        {1, 0, 1, 0, 0, 0, 0},
+        {1, 1, 0, 1, 1, 0, 0},
+        {1, 0, 1, 0, 1, 0, 0},
+        {0, 0, 1, 1, 0, 1, 1},
+        {0, 0, 0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 1, 0, 0}};
+    printf("%d", i);
+    visited[i] = 1;
+    enqueue(&q, i); // Enqueue i for exploration
+    while (!isEmpty(&q))
+    {
+        int node = dequeue(&q);
+        for (int j = 0; j < 7; j++)
         {
-            if (adj[start][i] == 1 && visited[i] == 0)
+            if (a[node][j] == 1 && visited[j] == 0)
             {
-                queue[++rear] = i;
-                visited[i] = 1;
+                printf("%d", j);
+                visited[j] = 1;
+                enqueue(&q, j);
             }
         }
     }
-}
-int main()
-{
-    int visited[MAX] = {0};
-    int adj[MAX][MAX], i, j;
-    printf("\n Enter the adjacency matrix: ");
-    for (i = 0; i < MAX; i++)
-        for (j = 0; j < MAX; j++)
-            scanf("%d", &adj[i][j]);
-    breadth_first_search(adj, visited, 0);
     return 0;
 }
